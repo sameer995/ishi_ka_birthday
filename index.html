@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday 🎂</title>
+  <meta name="theme-color" content="#0a1020">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <input type="file" id="picker" accept="image/*" hidden>
+
+  <!-- Countdown (before birthday): race start + market open -->
+  <section id="countdown" class="start">
+    <div class="mtn-slot" data-mtn></div>
+    <div class="start-inner">
+      <p class="eyebrow">Market opens · Race starts · Summit awaits</p>
+      <div class="bib">
+        <span class="bib-top">BIRTHDAY MARATHON</span>
+        <h1 data-name></h1>
+        <span class="bib-no" id="bibNo">No. 14</span>
+      </div>
+      <div class="timer" aria-live="off">
+        <div><span id="d">00</span><small>days</small></div>
+        <div><span id="h">00</span><small>hours</small></div>
+        <div><span id="m">00</span><small>mins</small></div>
+        <div><span id="s">00</span><small>secs</small></div>
+      </div>
+      <p class="muted">Come back on <b id="dateText">14 November</b> 🏁</p>
+    </div>
+  </section>
+
+  <!-- Celebration -->
+  <main id="party" hidden>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+    <div class="hud" aria-hidden="true">
+      <span>⛰ <b id="alt">0</b> m</span>
+      <span>🏃 KM <b id="km">0.0</b></span>
+      <i id="hudbar"></i>
+    </div>
+
+    <section class="hero">
+      <div class="stars" id="stars"></div>
+      <div class="mtn-slot" data-mtn></div>
+      <div class="hero-in">
+        <div class="photo-hero" id="heroPhoto"></div>
+        <p class="eyebrow pop">🎉 Summit reached · It's your day 🎉</p>
+        <h1 class="big" id="heroTitle"></h1>
+        <div class="chips" id="chips"></div>
+        <p class="typed"><span id="typed"></span><i class="caret"></i></p>
+        <button id="celebrate" class="btn pulse">Tap for confetti 🎊</button>
+        <a href="#cake" class="scroll">scroll to climb ↓</a>
+      </div>
+    </section>
+
+    <section id="cake" class="sec reveal">
+      <p class="eyebrow">At the summit</p>
+      <h2>Make a wish…</h2>
+      <div class="cake">
+        <div class="candles" id="candles"></div>
+        <div class="layer-c l3"></div><div class="layer-c l2"></div><div class="layer-c l1"></div>
+      </div>
+      <p class="muted" id="cakeHint">Tap the candles to blow them out 🕯️</p>
+      <p class="wish" id="wishText"></p>
+    </section>
+
+    <section class="sec reveal">
+      <p class="eyebrow">Base camp</p>
+      <h2>A letter for you ⛺</h2>
+      <div class="letter" id="letter"></div>
+      <p class="sign">— <span data-from></span></p>
+    </section>
+
+    <section class="sec reveal">
+      <p class="eyebrow">Trail snaps</p>
+      <h2>Our photo wall 📸</h2>
+      <p class="muted" id="photoHint"></p>
+      <div class="polaroids" id="polaroids"></div>
+    </section>
+
+    <section class="sec reveal">
+      <p class="eyebrow">The route · 42.2 km</p>
+      <h2>Our marathon of memories</h2>
+      <div class="route" id="route">
+        <div class="route-fill" id="routeFill"></div>
+        <div class="runner" id="runner">🏃</div>
+      </div>
+    </section>
+
+    <section class="sec reveal" id="chartSec">
+      <p class="eyebrow">Market report</p>
+      <h2>Our friendship, listed 📈</h2>
+      <div class="chart-card">
+        <div class="chart-head">
+          <div><b class="sym" id="sym"></b><span class="co" id="company"></span></div>
+          <div class="px"><b id="price">100.00</b><span class="pill up" id="chg">▲ 0%</span></div>
+        </div>
+        <div class="chart" id="chart"></div>
+        <div class="chart-foot muted"><span>Day 1</span><span>All-time high today 🚀</span></div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <p class="muted" id="stockNote"></p>
+    </section>
+
+    <section class="sec reveal">
+      <p class="eyebrow">Your portfolio</p>
+      <h2>Top holdings: why you're the best</h2>
+      <p class="muted">Tap a card</p>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <section class="sec reveal">
+      <p class="eyebrow">Cheer zone</p>
+      <h2>Crowd support 📣</h2>
+      <p class="muted">Leave a cheer for the finish-line crowd</p>
+      <form class="wishform" id="wishForm">
+        <input id="wishInput" maxlength="80" placeholder="Write a birthday cheer…" autocomplete="off" aria-label="Your cheer">
+        <button class="btn" type="submit">Send ✨</button>
+      </form>
+      <div class="notes" id="notes"></div>
+    </section>
+
+    <footer class="finish reveal">
+      <div class="flag-strip" aria-hidden="true"></div>
+      <div class="finish-in">
+        <p class="eyebrow">Finish line</p>
+        <h2>Love you, always 💛</h2>
+        <p class="muted"><span id="footerText"></span> <span data-from></span></p>
+        <button class="btn" id="again">More confetti 🎉</button>
+      </div>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
